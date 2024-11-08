@@ -1,30 +1,18 @@
 <template>
   <div class="bookmarked-recipes">
     <h1>Bookmarked Recipes</h1>
-    
+
     <!-- Search Input -->
     <div class="search-bar">
-      <input 
-        v-model="searchTerm" 
-        type="text" 
-        placeholder="Search bookmarked recipes by name..." 
-        class="search-input"
-      />
+      <input v-model="searchTerm" type="text" placeholder="Search bookmarked recipes by name..." class="search-input" />
     </div>
 
     <div class="recipe-grid">
-      <div 
-        class="recipe-card" 
-        v-for="recipe in filteredBookmarkedRecipes" 
-        :key="recipe.name"
-        @click="goToRecipeDetail(recipe.name)"
-      >
+      <div class="recipe-card" v-for="recipe in filteredBookmarkedRecipes" :key="recipe.name"
+        @click="goToRecipeDetail(recipe.name)">
         <div class="recipe-header">
           <!-- Bookmark icon (filled if bookmarked) -->
-          <i 
-            class="bi bi-bookmark-fill bookmark-icon" 
-            @click.stop="unBookmarkRecipe(recipe)"
-          ></i>
+          <i class="bi bi-bookmark-fill bookmark-icon" @click.stop="unBookmarkRecipe(recipe)"></i>
           <h2>{{ recipe.name }}</h2>
         </div>
         <h3>by {{ recipe.author?.name || 'Unknown Author' }}</h3>
@@ -68,7 +56,7 @@ export default {
       // Remove recipe from localStorage and update array
       let storedRecipes = JSON.parse(localStorage.getItem('bookmarkedRecipes')) || [];
       storedRecipes = storedRecipes.filter(item => item.name !== recipe.name);
-      
+
       this.bookmarkedRecipes = storedRecipes;
       localStorage.setItem('bookmarkedRecipes', JSON.stringify(storedRecipes));
     }
@@ -130,12 +118,14 @@ h1 {
 .bookmark-icon {
   margin-right: 10px;
   font-size: 1.5rem;
-  color: #FFD700; /* Gold color for the filled bookmark icon */
+  color: #FFD700;
+  /* Gold color for the filled bookmark icon */
   cursor: pointer;
 }
 
 .bookmark-icon:hover {
-  color: #ff4500; /* Change color on hover for better UI feedback */
+  color: #ff4500;
+  /* Change color on hover for better UI feedback */
 }
 
 .image-container img {

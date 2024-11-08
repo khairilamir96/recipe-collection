@@ -57,7 +57,7 @@ router-link:hover {
 
 /* Add your custom active class styling */
 .active-link {
-  color: #FFD700; /* Change to any color you prefer */
+  color: #FFD700;
+  /* Change to any color you prefer */
 }
-
 </style>

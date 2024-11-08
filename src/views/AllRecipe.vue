@@ -2,28 +2,17 @@
   <div class="recipe-container">
     <!-- Search Input -->
     <div class="search-bar">
-      <input 
-        v-model="searchTerm" 
-        type="text" 
-        placeholder="Search recipes by name" 
-        class="search-input"
-      />
+      <input v-model="searchTerm" type="text" placeholder="Search recipes by name" class="search-input" />
     </div>
-  
+
     <!-- Recipe Grid -->
     <div class="recipe-grid">
-      <div 
-        class="recipe-card" 
-        v-for="recipe in filteredRecipes" 
-        :key="recipe.name"
-        @click="goToRecipeDetail(recipe.name)"
-      >
+      <div class="recipe-card" v-for="recipe in filteredRecipes" :key="recipe.name"
+        @click="goToRecipeDetail(recipe.name)">
         <div class="recipe-header">
           <!-- Bookmark icon with click handler for instant visual feedback -->
-          <i 
-            :class="['bi', 'bookmark-icon', recipe.bookmarked ? 'bi-bookmark-fill' : 'bi-bookmark']" 
-            @click.stop="toggleBookmark(recipe)"
-          ></i>
+          <i :class="['bi', 'bookmark-icon', recipe.bookmarked ? 'bi-bookmark-fill' : 'bi-bookmark']"
+            @click.stop="toggleBookmark(recipe)"></i>
           <h2>{{ recipe.name }}</h2>
         </div>
         <h3>by {{ recipe.author?.name || 'Unknown Author' }}</h3>
@@ -61,7 +50,7 @@ export default {
   },
   computed: {
     filteredRecipes() {
-      return this.recipes.filter(recipe => 
+      return this.recipes.filter(recipe =>
         recipe.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
@@ -72,7 +61,7 @@ export default {
     },
     toggleBookmark(recipe) {
       let bookmarkedRecipes = JSON.parse(localStorage.getItem('bookmarkedRecipes')) || [];
-      
+
       if (recipe.bookmarked) {
         // Unbookmark recipe and update localStorage
         bookmarkedRecipes = bookmarkedRecipes.filter(item => item.name !== recipe.name);
