@@ -1,26 +1,63 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <!-- Top Navigation Bar -->
+    <nav>
+      <ul>
+        <li><router-link to="/" exact-active-class="active-link">Home</router-link></li>
+        <li><router-link to="/recipe" exact-active-class="active-link">All Recipes</router-link></li>
+      </ul>
+    </nav>
+
+    <!-- Main content area rendered by router-view -->
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'App'
 }
 </script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
+
+/* Styling the navigation bar */
+nav {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  margin-right: 20px;
+}
+
+router-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+router-link:hover {
+  text-decoration: underline;
+}
+
+/* Add your custom active class styling */
+.active-link {
+  color: #FFD700; /* Change to any color you prefer */
+}
+
 </style>
