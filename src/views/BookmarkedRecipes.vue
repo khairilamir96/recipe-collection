@@ -4,7 +4,7 @@
 
     <!-- Search Input -->
     <div class="search-bar">
-      <input v-model="searchTerm" type="text" placeholder="Search bookmarked recipes by name..." class="search-input" />
+      <input v-model="searchTerm" type="text" placeholder="Search bookmarked recipes by name" class="search-input" />
     </div>
 
     <div class="recipe-grid">
